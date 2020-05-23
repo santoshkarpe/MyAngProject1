@@ -66,3 +66,6 @@ rxjs                         6.4.0
 
 https://github.com/jmcooper/angular-fundamentals-files
 https://github.com/jmcooper/angular-fundamentals-files/blob/master/package.json
+
+npm install toastr --save
+

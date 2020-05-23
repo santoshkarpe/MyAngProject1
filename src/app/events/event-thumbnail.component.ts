@@ -11,21 +11,21 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
     <div>Price: \${{inputEvent.price}}</div>
     <div>
       <span>Location: {{inputEvent.location.address}}</span>
-      <span>&nbsp;</span>
-      <span>{{inputEvent.location.city}}, {{inputEvent.location.country}}</span>
-    </div> 
-    <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>         
+      <span class="pad-left">{{inputEvent.location.city}}, {{inputEvent.location.country}}</span>
+    </div>        
   </div>
-  `
+  `,
+  styles: [`
+     .pad-left { margin-left: 10px; }
+     .well div { color: #bbb; }
+  `]
 })
 
 export class EventThumbnailComponent {
   @Input() inputEvent:any
-  @Output() outputEventClick = new EventEmitter()
+  someProperty:any = "Some Property"
 
-  handleClickMe() {
-    //console.log('clicked')
-    //this.outputEventClick.emit('santosh')
-    this.outputEventClick.emit(this.inputEvent.name)
+  logFoo() {
+    console.log('foo')
   }
 }

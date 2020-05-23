@@ -9,11 +9,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
     <div>Date: {{inputEvent?.date}}</div>
     <div>Time: {{inputEvent?.time}}</div>
     <div>Price: \${{inputEvent?.price}}</div>
-    <div *ngIf="inputEvent?.location">
+    <div [hidden]="!inputEvent?.location">
       <span>Location: {{inputEvent?.location?.address}}</span>
       <span class="pad-left">{{inputEvent?.location?.city}}, {{inputEvent?.location?.country}}</span>
     </div>
-    <div *ngIf="inputEvent?.onlineUrl">
+    <div [hidden]="!inputEvent?.onlineUrl">
       Online URL: {{inputEvent?.onlineUrl}}
     </div>        
   </div>

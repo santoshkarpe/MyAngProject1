@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ISession } from '../shared/event.model';
+import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   templateUrl: './create-session.component.html',
@@ -29,7 +29,9 @@ export class CreateSessionComponent implements OnInit {
     this.presenter = new FormControl('', Validators.required)
     this.duration = new FormControl('', Validators.required)
     this.level = new FormControl('', Validators.required)
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400)])
+    //this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), this.restrictedWords])    --1
+    /* this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), this.restrictedWords(['foo','bar'])])    --2 */
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo','bar'])]) 
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -40,6 +42,23 @@ export class CreateSessionComponent implements OnInit {
     })
 
   }
+
+  /* --1 private restrictedWords(control: FormControl): {[key: string]: any} {
+    return control.value.includes('foo') ? {'restrictedWords123':'foo'} : null
+  } */
+
+  /* --2 private restrictedWords(words) {
+    return (control: FormControl ): {[key: string]: any} => {
+      if(!words) return null
+
+      var invalidWords = words
+            .map(w => control.value.includes(w) ? w : null )
+            .filter(w => w!= null)
+      
+      return invalidWords && invalidWords.length > 0 ? {'restrictedWords123': invalidWords.join(', ')} : null
+
+    }
+  } */
 
   saveSession(formValues) {
     //console.log(formValues)

@@ -11,7 +11,7 @@ import { EventService } from '../events/shared/event.service';
      #searchForm {margin-right: 100px;}
      @media (max-width:1200px) {#searchForm {display:none}}
      li > a.active { color: #F97924; }
-  `]
+  `],
 })
 
 export class NavBarComponent {
@@ -27,8 +27,9 @@ export class NavBarComponent {
     this.eventService.searchSessions(searchTerm).subscribe(
       sessions => {
         this.foundSessions = sessions;
-        console.log("foundSessions--->  "+ this.foundSessions)
-      }
-    )
+        //console.log("foundSessions--->  "+ this.foundSessions)
+        //console.log(JSON.stringify(this.foundSessions));
+      })
+    
   }
 }

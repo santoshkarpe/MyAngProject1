@@ -41,7 +41,10 @@ export class ProfileComponent implements OnInit {
   saveProfile(formValues) {
     if(this.profileForm.valid) {
       this.auth.updateCurrentUser(formValues.firstNameFrom,formValues.lastNameForm)
-      this.router.navigate(['events'])
+          .subscribe( () => {
+            console.log('Profile Saved');
+          });
+      //this.router.navigate(['events'])
     }
   }
 

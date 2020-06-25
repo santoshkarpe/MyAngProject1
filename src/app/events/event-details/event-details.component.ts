@@ -26,10 +26,21 @@ export class EventDetailsComponent implements OnInit {
     //this.event = this.eventService.getEvent(
      // +this.route.snapshot.params['id']);
 
-     this.route.params.forEach((params: Params) => {
-       this.event = this.eventService.getEvent(+params['id']);
-       this.addMode = false;
-     })
+     /* this.route.params.forEach((params: Params) => {
+       //this.event = this.eventService.getEvent(+params['id']);
+       /* this.eventService.getEvent(+params['id']).subscribe((e : IEvent)=> {
+         this.event = e;
+         this.addMode = false;
+       }) 
+
+      this.event = this.route.snapshot.data['eventR'];
+      this.addMode = false;
+     }) */
+
+     this.route.data.forEach((data) => {
+     this.event = data['eventR'];
+     this.addMode = false;
+    })
    
   }
 

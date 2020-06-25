@@ -17,7 +17,8 @@ import {
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index';
 import {
   ToastrService,
@@ -73,7 +74,8 @@ let jQuery = window['$'];
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    VoterService
+    VoterService,
+    EventResolver
   ],
   bootstrap: [EventsAppComponent]
 })
